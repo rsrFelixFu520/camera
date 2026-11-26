@@ -1,0 +1,1342 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 1000000
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxSettingsParticleFieldAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:aa:op
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                token omni:rtx:post:tonemap:operator = "none"
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                int omni:rtx:pt:clampSpp = 64
+                uint omni:rtx:pt:limits:maxBounces = 3
+                uint omni:rtx:pt:limits:maxGlossyBounces = 3
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                int omni:rtx:pt:samplesPerIteration = 64
+                uint omni:rtx:pt:samplesPerPixel = 64
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "RealTimePathTracing"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:cached:enabled = 0
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:ecoMode:enabled = 0
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                int omni:rtx:rt:sss:samples = 1
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (960, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = [
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>,
+            </Render/OmniverseKit/HydraTextures/Replicator>,
+        ]
+    }
+
+    def "Vars" (
+        hide_in_stage_window = true
+        no_delete = true
+    )
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+            uniform token sourceType = "raw"
+        }
+    }
+}
+
+over "OmniverseKit_Persp"
+{
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+}
+
+def Xform "World"
+{
+    def Xform "Room" (
+        prepend references = @/home/fufa/isaacsim/Assets/Isaac/6.2/Isaac/Environments/Simple_Room/simple_room.usd@
+    )
+    {
+        double3 xformOp:translate = (0, 0, 0.77)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        over "RectLight"
+        {
+            float inputs:intensity = 0
+        }
+
+        over "DomeLight"
+        {
+            float inputs:intensity = 0
+        }
+    }
+
+    def "Objects"
+    {
+        def Xform "banana_1"
+        {
+            float xformOp:rotateZ = 15
+            float3 xformOp:scale = (0.28796718, 0.28796718, 0.28796718)
+            double3 xformOp:translate = (-0.54, -0.2, 0.784)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-0, -0, 0.13789861892972846)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/banana_1.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "bell_pepper_2"
+        {
+            float xformOp:rotateZ = 0
+            float3 xformOp:scale = (0.117821895, 0.117821895, 0.117821895)
+            double3 xformOp:translate = (-0.1, -0.31, 0.784)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-7.050585115742081e-10, 7.077908870112282e-9, 0.6186650123590774)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/bell_pepper_2.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "bottle_3"
+        {
+            float xformOp:rotateZ = 0
+            float3 xformOp:scale = (0.32683954, 0.32683954, 0.32683954)
+            double3 xformOp:translate = (0.57, 0.03, 0.784)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-0, -0, 0.5813249945640564)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/bottle_3.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "cucumber_5"
+        {
+            float xformOp:rotateZ = -18
+            float3 xformOp:scale = (0.24827102, 0.24827102, 0.24827102)
+            double3 xformOp:translate = (-0.57, 0.12, 0.809)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-0, -0, 0.28372775079262835)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/cucumber_5.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "cutting_board_6"
+        {
+            float xformOp:rotateZ = 0
+            float3 xformOp:scale = (0.45898327, 0.45898327, 0.45898327)
+            double3 xformOp:translate = (-0.42, 0.1, 0.784)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-0, -0, 0.029575413719590753)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/cutting_board_6.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "egg_7"
+        {
+            float xformOp:rotateZ = 0
+            float3 xformOp:scale = (0.08748584, 0.08748584, 0.08748584)
+            double3 xformOp:translate = (0.2, -0.3, 0.798)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-2.450195601966243e-11, -4.412561260824788e-9, 0.5626789228888945)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/egg_7.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "grape_9"
+        {
+            float xformOp:rotateZ = 0
+            float3 xformOp:scale = (0.17308703, 0.17308703, 0.17308703)
+            double3 xformOp:translate = (0.21, 0.04, 0.784)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-0, -0, 0.4487710552112769)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/grape_9.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "knife_10"
+        {
+            float xformOp:rotateZ = -12
+            float3 xformOp:scale = (0.2407733, 0.2407733, 0.2407733)
+            double3 xformOp:translate = (-0.34, -0.49, 0.784)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-0, 1.3877787807814457e-17, 0.08717789338413512)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/knife_10.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "pitcher_11"
+        {
+            float xformOp:rotateZ = -20
+            float3 xformOp:scale = (0.36092255, 0.36092255, 0.36092255)
+            double3 xformOp:translate = (0.85, 0.29, 0.784)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (5.551115123125783e-17, -0, 0.4294550120830536)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/pitcher_11.usd@
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "plate_13"
+        {
+            float xformOp:rotateZ = 0
+            float3 xformOp:scale = (0.3101192, 0.3101192, 0.3101192)
+            double3 xformOp:translate = (0.32, -0.27, 0.784)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:scale"]
+
+            def Xform "Center"
+            {
+                double3 xformOp:translate = (-0, -0, 0.07484497281762147)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+
+                def Xform "Asset" (
+                    prepend references = @/home/fufa/Projects/camera_check/v5/meshes/plate_13.usd@
+                )
+                {
+                }
+            }
+        }
+    }
+
+    def "Materials"
+    {
+        def Material "White"
+        {
+            token outputs:surface.connect = </World/Materials/White/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.8, 0.8, 0.8)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Black"
+        {
+            token outputs:surface.connect = </World/Materials/Black/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.006, 0.006, 0.006)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Probe"
+        {
+            token outputs:surface.connect = </World/Materials/Probe/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.18, 0.18, 0.18)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.35
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch0"
+        {
+            token outputs:surface.connect = </World/Materials/Patch0/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.02, 0.02, 0.02)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch1"
+        {
+            token outputs:surface.connect = </World/Materials/Patch1/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.05, 0.05, 0.05)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch2"
+        {
+            token outputs:surface.connect = </World/Materials/Patch2/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.1, 0.1, 0.1)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch3"
+        {
+            token outputs:surface.connect = </World/Materials/Patch3/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.18, 0.18, 0.18)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch4"
+        {
+            token outputs:surface.connect = </World/Materials/Patch4/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.4, 0.4, 0.4)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch5"
+        {
+            token outputs:surface.connect = </World/Materials/Patch5/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.8, 0.8, 0.8)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch6"
+        {
+            token outputs:surface.connect = </World/Materials/Patch6/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.55, 0.03, 0.03)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch7"
+        {
+            token outputs:surface.connect = </World/Materials/Patch7/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.03, 0.45, 0.03)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch8"
+        {
+            token outputs:surface.connect = </World/Materials/Patch8/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.03, 0.05, 0.55)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch9"
+        {
+            token outputs:surface.connect = </World/Materials/Patch9/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.55, 0.45, 0.03)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch10"
+        {
+            token outputs:surface.connect = </World/Materials/Patch10/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.03, 0.45, 0.45)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Patch11"
+        {
+            token outputs:surface.connect = </World/Materials/Patch11/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.45, 0.03, 0.45)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "Motion"
+        {
+            token outputs:surface.connect = </World/Materials/Motion/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.5, 0.02, 0.015)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+    }
+
+    def "Targets"
+    {
+        def Cube "Probe" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Probe>
+            double size = 1
+            float3 xformOp:scale = (0.21, 0.21, 0.23)
+            double3 xformOp:translate = (-0.91, -0.12, 0.9)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch0" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch0>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (-0.58, 0.48, 1.04)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch1>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (-0.42999999999999994, 0.48, 1.04)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch2" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch2>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (-0.27999999999999997, 0.48, 1.04)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch3" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch3>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (-0.13, 0.48, 1.04)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch4" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch4>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (0.020000000000000018, 0.48, 1.04)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch5" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch5>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (0.17000000000000004, 0.48, 1.04)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch6" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch6>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (-0.58, 0.48, 1.19)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch7" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch7>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (-0.42999999999999994, 0.48, 1.19)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch8" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch8>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (-0.27999999999999997, 0.48, 1.19)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch9" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch9>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (-0.13, 0.48, 1.19)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch10" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch10>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (0.020000000000000018, 0.48, 1.19)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Patch11" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Patch11>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.012, 0.14)
+            double3 xformOp:translate = (0.17000000000000004, 0.48, 1.19)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "ChartBack" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.94, 0.025, 0.35)
+            double3 xformOp:translate = (-0.205, 0.5, 1.115)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "EdgeWhite" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/White>
+            double size = 1
+            float3 xformOp:scale = (0.24, 0.018, 0.28)
+            double3 xformOp:translate = (-0.83, 0.27, 1.14)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "EdgeBlack" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float xformOp:rotateY = 5
+            float3 xformOp:scale = (0.12, 0.018, 0.28)
+            double3 xformOp:translate = (-0.83, 0.252, 1.14)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale", "xformOp:rotateY"]
+        }
+
+        def Cube "Stripe0" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.18, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.172, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe2" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.16399999999999998, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe3" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.156, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe4" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.148, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe5" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.13999999999999999, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe6" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.132, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe7" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.124, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe8" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.11599999999999999, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe9" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.10799999999999998, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe10" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.09999999999999999, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe11" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.092, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe12" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.08399999999999999, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe13" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.07599999999999998, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe14" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.06799999999999999, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe15" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.06, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe16" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.05199999999999999, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe17" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.043999999999999984, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe18" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.035999999999999976, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe19" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.027999999999999997, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe20" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.01999999999999999, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe21" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.011999999999999983, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe22" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (-0.0040000000000000036, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe23" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.0040000000000000036, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe24" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.01200000000000001, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe25" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.020000000000000018, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe26" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.028000000000000025, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe27" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.036000000000000004, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe28" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.04400000000000001, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe29" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.05200000000000002, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe30" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.06, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe31" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.068, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe32" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.07600000000000001, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe33" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.08400000000000002, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe34" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.09200000000000003, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe35" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.10000000000000003, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe36" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.10800000000000004, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe37" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.11599999999999999, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe38" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.124, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe39" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.132, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe40" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.14, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe41" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.14800000000000002, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe42" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.15600000000000003, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe43" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.16400000000000003, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe44" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.172, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe45" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.18, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe46" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.188, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Stripe47" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.004, 0.16, 0.009)
+            double3 xformOp:translate = (0.196, 0.21, 0.858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "NearMarker" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/White>
+            double size = 1
+            float3 xformOp:scale = (0.14, 0.035, 0.28)
+            double3 xformOp:translate = (0.25, -0.68, 0.95)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "NearBlack" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Black>
+            double size = 1
+            float3 xformOp:scale = (0.045, 0.014, 0.28)
+            double3 xformOp:translate = (0.25, -0.702, 0.95)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "MotionTarget" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/Motion>
+            double size = 1
+            float3 xformOp:scale = (0.1, 0.035, 0.34)
+            double3 xformOp:translate = (0.78, -0.54, 0.98)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "FarMarker" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </World/Materials/White>
+            double size = 1
+            float3 xformOp:scale = (0.24, 0.03, 0.4)
+            double3 xformOp:translate = (-0.7, 1.35, 1.14)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def RectLight "Key"
+    {
+        float inputs:colorTemperature = 6500
+        bool inputs:enableColorTemperature = 1
+        float inputs:height = 0.8
+        float inputs:intensity = 1000
+        float inputs:width = 1.2
+        double3 xformOp:translate = (-0.4, -0.3, 2.6)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def DomeLight "Fill"
+    {
+        float inputs:intensity = 120
+    }
+
+    def Camera "Camera" (
+        prepend apiSchemas = ["OmniRtxCameraExposureAPI_1", "OmniRtxCameraAutoExposureAPI_1"]
+    )
+    {
+        float2 clippingRange = (0.01, 100)
+        float exposure = 3
+        float exposure:fStop = 5
+        float exposure:iso = 100
+        float exposure:responsivity = 16
+        float exposure:time = 0.02
+        float focalLength = 0.35
+        float focusDistance = 2.6
+        float fStop = 0
+        float horizontalAperture = 0.45405406
+        float verticalAperture = 0.34054053
+        matrix4d xformOp:transform = ( (0.8262273428075475, 0.5633368246415097, 2.7755575615628907e-17, 0), (-0.22335899312532215, 0.3275931899171392, 0.9180378326136429, -0), (0.5171645175253434, -0.7585079590371704, 0.39649279676942994, 0), (1.4999999999999998, -2.1999999999999997, 2.0999999999999996, 0.9999999999999998) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+}
+

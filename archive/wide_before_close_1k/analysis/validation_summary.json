@@ -1,0 +1,56 @@
+{
+  "artifacts_valid": true,
+  "errors": [],
+  "warnings": [
+    "Physical real-camera acceptance remains NOT_EVALUATED.",
+    "Timing model deterministic repeats reuse one rendered motion sequence; they are repeated model evaluations, not five independently rendered dynamic acquisitions.",
+    "Six source lens profiles contain black/invalid regions; no claim of full valid ray coverage.",
+    "Legacy camera_params model is pinhole even with post-projection lens distortion; 4x4 projection does not prove fisheye calibration.",
+    "Native render batches span a resource-exhaustion recovery; internal histories are not guaranteed identical across experiments."
+  ],
+  "experiments": 187,
+  "parameter_levels": 555,
+  "native_frames": 995,
+  "model_outputs": 1780,
+  "comparison_plates": 187,
+  "repeat_sheets": 187,
+  "markdown_links_checked": 580,
+  "html_articles": 187,
+  "source_terms_audited": 324,
+  "model_invariants_passed": true,
+  "six_camera_profiles": 6,
+  "motion_frames": 97,
+  "motion_first_last_linear_MAE": 0.005000193603336811,
+  "usd_dependency_audit": {
+    "layers": 67,
+    "assets": 44,
+    "unresolved": [
+      "OmniGlass.mdl",
+      "OmniPBR.mdl",
+      "gltf/pbr.mdl"
+    ],
+    "offline_resolver_note": "Standalone OpenUSD does not resolve MDL module names via Kit search paths. All three unresolved MDL modules exist in bundled Kit MDL directories; actual RTX captures used those runtime search paths.",
+    "builtin_mdl_files": {
+      "OmniGlass.mdl": "/home/fufa/isaacsim/kit/mdl/core/Base/OmniGlass.mdl",
+      "OmniPBR.mdl": "/home/fufa/isaacsim/kit/mdl/core/Base/OmniPBR.mdl",
+      "gltf/pbr.mdl": "/home/fufa/isaacsim/kit/mdl/core/mdl/gltf/pbr.mdl"
+    },
+    "unexpected_missing": []
+  },
+  "real_camera_consistency_status": "NOT_EVALUATED",
+  "SEDD_status": "DIAGNOSTIC_ONLY",
+  "browser_verification": {
+    "search_T02": 1,
+    "isaac_native_filter": 67,
+    "offline_model_filter": 120,
+    "search_E01": 1,
+    "screenshot": "analysis/browser_preview.png",
+    "URL": "http://127.0.0.1:8766/v5/index.html",
+    "status": "verified in actual in-app browser"
+  },
+  "html_filter_options": [
+    "",
+    "isaac_native",
+    "offline_model"
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "date": "2026-11-23",
+  "paper": "https://arxiv.org/abs/2510.10203v3",
+  "repository": "https://github.com/Dingyi-Yao/SEDD",
+  "commit": "c91a528530560eec9a47a48d03e54d12c9bd9677",
+  "checkpoint_sha256": {
+    "FeatureExtractor.pth": "2c23d9d7904289ab370df4b682fb4e61c862455a24b0ec88a49fd093a010a027",
+    "StyleExtractor.pth": "c1e7485286fcc6da992946bd36890e288133f752377f7a42bb01cc0f999d1e49"
+  },
+  "feature_forward": "ResNet18 conv1/bn1/relu/maxpool/layer1; upper triangular unnormalized Gram; per-crop standardization with sample std; learned MLP 2080→1040→520→64",
+  "preprocessing": "resize short side 512, five fixed 224x224 crops; normalize ImageNet; average embeddings per source image. Differs from authors stochastic crop/flip protocol; scores are not benchmark-comparable.",
+  "kernel_discrepancy": "paper exp(-d²/(2*10²)) => gamma=.005; repository metric.py uses sklearn rbf_kernel gamma=10. Both calculated, no silent substitution.",
+  "device": "cuda:1",
+  "results": [
+    {
+      "camera": "head_left",
+      "comparison": "v3 real lab vs v5 Simple Room; unpaired scenes",
+      "SEDD1": 0.26121771335601807,
+      "SEDD2_author_code_gamma10": 0.9889068603515625,
+      "SEDD2_paper_sigma10": 0.0006821155548095703,
+      "n_real": 10,
+      "n_sim": 5,
+      "real_paths": [
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_00.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_01.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_02.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_03.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_04.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_05.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_06.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_07.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_08.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_left/frame_09.png"
+      ],
+      "sim_paths": [
+        "renders/profiles/head_left_00.png",
+        "renders/profiles/head_left_01.png",
+        "renders/profiles/head_left_02.png",
+        "renders/profiles/head_left_03.png",
+        "renders/profiles/head_left_04.png"
+      ],
+      "real_real_split": {
+        "SEDD1": 0.0020264233462512493,
+        "SEDD2_author_code_gamma10": -8.83340835571289e-05,
+        "SEDD2_paper_sigma10": 0.0,
+        "n_real": 5,
+        "n_sim": 5
+      },
+      "interpretation": "DIAGNOSTIC_ONLY; automotive style network, different scene and pose, few highly correlated frames; no PASS/FAIL"
+    },
+    {
+      "camera": "head_right",
+      "comparison": "v3 real lab vs v5 Simple Room; unpaired scenes",
+      "SEDD1": 0.2576373517513275,
+      "SEDD2_author_code_gamma10": 0.9698828458786011,
+      "SEDD2_paper_sigma10": 0.0006635189056396484,
+      "n_real": 10,
+      "n_sim": 5,
+      "real_paths": [
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_00.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_01.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_02.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_03.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_04.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_05.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_06.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_07.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_08.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/head_right/frame_09.png"
+      ],
+      "sim_paths": [
+        "renders/profiles/head_right_00.png",
+        "renders/profiles/head_right_01.png",
+        "renders/profiles/head_right_02.png",
+        "renders/profiles/head_right_03.png",
+        "renders/profiles/head_right_04.png"
+      ],
+      "real_real_split": {
+        "SEDD1": 0.004039540886878967,
+        "SEDD2_author_code_gamma10": 0.0001266002655029297,
+        "SEDD2_paper_sigma10": 1.1920928955078125e-07,
+        "n_real": 5,
+        "n_sim": 5
+      },
+      "interpretation": "DIAGNOSTIC_ONLY; automotive style network, different scene and pose, few highly correlated frames; no PASS/FAIL"
+    },
+    {
+      "camera": "left_wrist_left",
+      "comparison": "v3 real lab vs v5 Simple Room; unpaired scenes",
+      "SEDD1": 0.1289731115102768,
+      "SEDD2_author_code_gamma10": 0.30633544921875,
+      "SEDD2_paper_sigma10": 0.00016641616821289062,
+      "n_real": 10,
+      "n_sim": 5,
+      "real_paths": [
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_00.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_01.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_02.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_03.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_04.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_05.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_06.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_07.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_08.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_left/frame_09.png"
+      ],
+      "sim_paths": [
+        "renders/profiles/left_wrist_left_00.png",
+        "renders/profiles/left_wrist_left_01.png",
+        "renders/profiles/left_wrist_left_02.png",
+        "renders/profiles/left_wrist_left_03.png",
+        "renders/profiles/left_wrist_left_04.png"
+      ],
+      "real_real_split": {
+        "SEDD1": 0.003942148294299841,
+        "SEDD2_author_code_gamma10": 0.00011909008026123047,
+        "SEDD2_paper_sigma10": 1.1920928955078125e-07,
+        "n_real": 5,
+        "n_sim": 5
+      },
+      "interpretation": "DIAGNOSTIC_ONLY; automotive style network, different scene and pose, few highly correlated frames; no PASS/FAIL"
+    },
+    {
+      "camera": "left_wrist_right",
+      "comparison": "v3 real lab vs v5 Simple Room; unpaired scenes",
+      "SEDD1": 0.1570914089679718,
+      "SEDD2_author_code_gamma10": 0.4371687173843384,
+      "SEDD2_paper_sigma10": 0.00024700164794921875,
+      "n_real": 10,
+      "n_sim": 5,
+      "real_paths": [
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_00.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_01.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_02.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_03.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_04.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_05.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_06.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_07.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_08.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/left_wrist_right/frame_09.png"
+      ],
+      "sim_paths": [
+        "renders/profiles/left_wrist_right_00.png",
+        "renders/profiles/left_wrist_right_01.png",
+        "renders/profiles/left_wrist_right_02.png",
+        "renders/profiles/left_wrist_right_03.png",
+        "renders/profiles/left_wrist_right_04.png"
+      ],
+      "real_real_split": {
+        "SEDD1": 0.0042003002017736435,
+        "SEDD2_author_code_gamma10": 0.00013649463653564453,
+        "SEDD2_paper_sigma10": 2.384185791015625e-07,
+        "n_real": 5,
+        "n_sim": 5
+      },
+      "interpretation": "DIAGNOSTIC_ONLY; automotive style network, different scene and pose, few highly correlated frames; no PASS/FAIL"
+    },
+    {
+      "camera": "right_wrist_left",
+      "comparison": "v3 real lab vs v5 Simple Room; unpaired scenes",
+      "SEDD1": 0.14161407947540283,
+      "SEDD2_author_code_gamma10": 0.3632253408432007,
+      "SEDD2_paper_sigma10": 0.00020039081573486328,
+      "n_real": 10,
+      "n_sim": 5,
+      "real_paths": [
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_00.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_01.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_02.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_03.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_04.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_05.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_06.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_07.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_08.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_left/frame_09.png"
+      ],
+      "sim_paths": [
+        "renders/profiles/right_wrist_left_00.png",
+        "renders/profiles/right_wrist_left_01.png",
+        "renders/profiles/right_wrist_left_02.png",
+        "renders/profiles/right_wrist_left_03.png",
+        "renders/profiles/right_wrist_left_04.png"
+      ],
+      "real_real_split": {
+        "SEDD1": 0.00241056433878839,
+        "SEDD2_author_code_gamma10": -0.00015628337860107422,
+        "SEDD2_paper_sigma10": -1.1920928955078125e-07,
+        "n_real": 5,
+        "n_sim": 5
+      },
+      "interpretation": "DIAGNOSTIC_ONLY; automotive style network, different scene and pose, few highly correlated frames; no PASS/FAIL"
+    },
+    {
+      "camera": "right_wrist_right",
+      "comparison": "v3 real lab vs v5 Simple Room; unpaired scenes",
+      "SEDD1": 0.19570064544677734,
+      "SEDD2_author_code_gamma10": 0.6361091136932373,
+      "SEDD2_paper_sigma10": 0.00038301944732666016,
+      "n_real": 10,
+      "n_sim": 5,
+      "real_paths": [
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_00.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_01.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_02.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_03.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_04.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_05.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_06.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_07.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_08.png",
+        "/home/fufa/Projects/camera_check/v3/analysis/real_crops/right_wrist_right/frame_09.png"
+      ],
+      "sim_paths": [
+        "renders/profiles/right_wrist_right_00.png",
+        "renders/profiles/right_wrist_right_01.png",
+        "renders/profiles/right_wrist_right_02.png",
+        "renders/profiles/right_wrist_right_03.png",
+        "renders/profiles/right_wrist_right_04.png"
+      ],
+      "real_real_split": {
+        "SEDD1": 0.003855027724057436,
+        "SEDD2_author_code_gamma10": 0.00014257431030273438,
+        "SEDD2_paper_sigma10": 1.1920928955078125e-07,
+        "n_real": 5,
+        "n_sim": 5
+      },
+      "interpretation": "DIAGNOSTIC_ONLY; automotive style network, different scene and pose, few highly correlated frames; no PASS/FAIL"
+    }
+  ],
+  "sensitivity": [
+    {
+      "experiment": "G01",
+      "value": 25,
+      "SEDD1": 0.26234328746795654,
+      "SEDD2_author_code_gamma10": 0.9948046207427979,
+      "SEDD2_paper_sigma10": 0.0006880760192871094,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "G01",
+      "value": 35,
+      "SEDD1": 0.2580752670764923,
+      "SEDD2_author_code_gamma10": 0.9722774028778076,
+      "SEDD2_paper_sigma10": 0.0006659030914306641,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "G01",
+      "value": 50,
+      "SEDD1": 0.25566917657852173,
+      "SEDD2_author_code_gamma10": 0.9594823122024536,
+      "SEDD2_paper_sigma10": 0.0006536245346069336,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "O01",
+      "value": 0.8,
+      "SEDD1": 0.40809786319732666,
+      "SEDD2_author_code_gamma10": 1.621433973312378,
+      "SEDD2_paper_sigma10": 0.0016647577285766602,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "O01",
+      "value": 2.7,
+      "SEDD1": 0.28070032596588135,
+      "SEDD2_author_code_gamma10": 1.090144395828247,
+      "SEDD2_paper_sigma10": 0.0007876157760620117,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "O01",
+      "value": 8,
+      "SEDD1": 0.3128316402435303,
+      "SEDD2_author_code_gamma10": 1.2480659484863281,
+      "SEDD2_paper_sigma10": 0.0009783506393432617,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "L03",
+      "value": 3000,
+      "SEDD1": 0.3920646011829376,
+      "SEDD2_author_code_gamma10": 1.5696289539337158,
+      "SEDD2_paper_sigma10": 0.0015363693237304688,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "L03",
+      "value": 6500,
+      "SEDD1": 0.2621987760066986,
+      "SEDD2_author_code_gamma10": 0.9940321445465088,
+      "SEDD2_paper_sigma10": 0.0006873607635498047,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "L03",
+      "value": 10000,
+      "SEDD1": 0.25736820697784424,
+      "SEDD2_author_code_gamma10": 0.9685226678848267,
+      "SEDD2_paper_sigma10": 0.0006620883941650391,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E01",
+      "value": 0.005,
+      "SEDD1": 0.35348644852638245,
+      "SEDD2_author_code_gamma10": 1.422852635383606,
+      "SEDD2_paper_sigma10": 0.0012488365173339844,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E01",
+      "value": 0.02,
+      "SEDD1": 0.24662254750728607,
+      "SEDD2_author_code_gamma10": 0.9111638069152832,
+      "SEDD2_paper_sigma10": 0.0006083250045776367,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E01",
+      "value": 0.08,
+      "SEDD1": 0.3465927243232727,
+      "SEDD2_author_code_gamma10": 1.397770881652832,
+      "SEDD2_paper_sigma10": 0.0012007951736450195,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E02",
+      "value": 25,
+      "SEDD1": 0.358506977558136,
+      "SEDD2_author_code_gamma10": 1.4414782524108887,
+      "SEDD2_paper_sigma10": 0.0012843608856201172,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E02",
+      "value": 100,
+      "SEDD1": 0.24245819449424744,
+      "SEDD2_author_code_gamma10": 0.8886938095092773,
+      "SEDD2_paper_sigma10": 0.0005877017974853516,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E02",
+      "value": 400,
+      "SEDD1": 0.3448534309864044,
+      "SEDD2_author_code_gamma10": 1.390772819519043,
+      "SEDD2_paper_sigma10": 0.0011888742446899414,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E05",
+      "value": 1,
+      "SEDD1": 0.2517271637916565,
+      "SEDD2_author_code_gamma10": 0.9384908676147461,
+      "SEDD2_paper_sigma10": 0.0006335973739624023,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E05",
+      "value": 3,
+      "SEDD1": 0.25042930245399475,
+      "SEDD2_author_code_gamma10": 0.9315625429153442,
+      "SEDD2_paper_sigma10": 0.0006270408630371094,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "E05",
+      "value": 5,
+      "SEDD1": 0.2547305226325989,
+      "SEDD2_author_code_gamma10": 0.9544898271560669,
+      "SEDD2_paper_sigma10": 0.0006487369537353516,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "D01",
+      "value": 600,
+      "SEDD1": 0.2658312916755676,
+      "SEDD2_author_code_gamma10": 1.0131601095199585,
+      "SEDD2_paper_sigma10": 0.0007064342498779297,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "D01",
+      "value": 740,
+      "SEDD1": 0.261752724647522,
+      "SEDD2_author_code_gamma10": 0.9917194843292236,
+      "SEDD2_paper_sigma10": 0.0006849765777587891,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "D01",
+      "value": 900,
+      "SEDD1": 0.25440794229507446,
+      "SEDD2_author_code_gamma10": 0.9527653455734253,
+      "SEDD2_paper_sigma10": 0.0006471872329711914,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "R11",
+      "value": 0.6,
+      "SEDD1": 0.4384988248348236,
+      "SEDD2_author_code_gamma10": 1.70723295211792,
+      "SEDD2_paper_sigma10": 0.0019218921661376953,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "R11",
+      "value": 1.0,
+      "SEDD1": 0.24593067169189453,
+      "SEDD2_author_code_gamma10": 0.9074463844299316,
+      "SEDD2_paper_sigma10": 0.0006046295166015625,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "R11",
+      "value": 1.8,
+      "SEDD1": 0.2467416226863861,
+      "SEDD2_author_code_gamma10": 0.9117964506149292,
+      "SEDD2_paper_sigma10": 0.0006089210510253906,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "R13",
+      "value": 0.0,
+      "SEDD1": 0.24380703270435333,
+      "SEDD2_author_code_gamma10": 0.8960283994674683,
+      "SEDD2_paper_sigma10": 0.0005942583084106445,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "R13",
+      "value": 1.0,
+      "SEDD1": 0.24386224150657654,
+      "SEDD2_author_code_gamma10": 0.8963273763656616,
+      "SEDD2_paper_sigma10": 0.0005944967269897461,
+      "n_real": 10,
+      "n_sim": 5
+    },
+    {
+      "experiment": "R13",
+      "value": 2.0,
+      "SEDD1": 0.24428144097328186,
+      "SEDD2_author_code_gamma10": 0.8985778093338013,
+      "SEDD2_paper_sigma10": 0.0005966424942016602,
+      "n_real": 10,
+      "n_sim": 5
+    }
+  ],
+  "acceptance_status": "NOT_EVALUATED",
+  "limitation": "SEDD is a style distribution measure, not a physical camera consistency certificate; cannot separate scene, optics and ISP by itself."
+}

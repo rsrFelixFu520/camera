@@ -1,0 +1,192 @@
+[
+  {
+    "name": "banana_1",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/banana_1.glb",
+    "sha256": "46ac9725dd14649ac0738e4230108bf2a522fbd9098e226be081bcc8e6eba33d",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/banana_1.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.5556188769429926,
+      -0.27459618458684776,
+      -0.13789861892972846
+    ],
+    "max": [
+      0.5556188769429926,
+      0.27459618458684776,
+      0.13789861892972846
+    ]
+  },
+  {
+    "name": "bell_pepper_2",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/bell_pepper_2.glb",
+    "sha256": "6f99576b5fd779a78576cfe903ae1ea54b3dfb4d03784430b67c3fb3733a3dcf",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/bell_pepper_2.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.6053496973740635,
+      -0.6789909501238194,
+      -0.6186650123590774
+    ],
+    "max": [
+      0.6053496987841805,
+      0.6789909359680016,
+      0.6186649789988627
+    ]
+  },
+  {
+    "name": "bottle_3",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/bottle_3.glb",
+    "sha256": "851473d8dc64487e1af77401737458a2e6eb789af226968589c06df0dc02d0a6",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/bottle_3.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.17779850959777832,
+      -0.17926150560379028,
+      -0.5813249945640564
+    ],
+    "max": [
+      0.17779850959777832,
+      0.17926150560379028,
+      0.5813249945640564
+    ]
+  },
+  {
+    "name": "cucumber_5",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/cucumber_5.glb",
+    "sha256": "f2064a5275e779d41a84e257b97a6a60b617be3ebd337043db47603bd527e5b9",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/cucumber_5.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.6041784682087422,
+      -0.29507356148946257,
+      -0.28372775079262835
+    ],
+    "max": [
+      0.6041784682087422,
+      0.29507356148946257,
+      0.28372775079262835
+    ]
+  },
+  {
+    "name": "cutting_board_6",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/cutting_board_6.glb",
+    "sha256": "3d9c78f5e06e093b42526d9ec4125f89dead977a0f438255d50131eeab8635df",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/cutting_board_6.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.5555758041063917,
+      -0.3379653720559963,
+      -0.029575413719590753
+    ],
+    "max": [
+      0.5555758041063917,
+      0.3379653720559963,
+      0.029575413719590757
+    ]
+  },
+  {
+    "name": "egg_7",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/egg_7.glb",
+    "sha256": "e72c969234d2d4fdac9c66b77b7262bcdea2fd7de70aa85fc12eba4987efc471",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/egg_7.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.5715210488823333,
+      -0.5645130869963562,
+      -0.5626789228888945
+    ],
+    "max": [
+      0.5715210489313373,
+      0.5645130958214787,
+      0.5626788851315772
+    ]
+  },
+  {
+    "name": "grape_9",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/grape_9.glb",
+    "sha256": "2db98ec612d9f15ea247f9d0a3e43a2b3c4e3fc6c1c687aefb10586778bf3174",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/grape_9.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.6644056516599361,
+      -0.6092714722314032,
+      -0.4487710552112769
+    ],
+    "max": [
+      0.6644056516599361,
+      0.6092714722314032,
+      0.4487710552112769
+    ]
+  },
+  {
+    "name": "knife_10",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/knife_10.glb",
+    "sha256": "dd53f471659069b97529cd6648cac9cfd10dec5876f08678c0cc435aad87ba79",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/knife_10.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.6022262480765659,
+      -0.14806154058562712,
+      -0.08717789338413512
+    ],
+    "max": [
+      0.6022262480765659,
+      0.1480615405856271,
+      0.08717789338413513
+    ]
+  },
+  {
+    "name": "pitcher_11",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/pitcher_11.glb",
+    "sha256": "3a0968bbb6f903ae23e43607b61ee16d846e69ef30bfb002688b974f8caf147d",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/pitcher_11.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.4268715083599091,
+      -0.29605500400066376,
+      -0.4294550120830536
+    ],
+    "max": [
+      0.426871508359909,
+      0.29605500400066376,
+      0.4294550120830536
+    ]
+  },
+  {
+    "name": "plate_13",
+    "source": "/home/fufa/Projects/camera_check/v3/meshes/plate_13.glb",
+    "sha256": "bbe450fc2422e3f3e356c031eb14ee7743afcaee6ae87d84af6ef26bef7b1b30",
+    "converted": "/home/fufa/Projects/camera_check/v5/meshes/plate_13.usd",
+    "up": "Y",
+    "metersPerUnit": 1.0,
+    "defaultPrim": "/World",
+    "min": [
+      -0.5965448123974588,
+      -0.5948571286919425,
+      -0.07484497281762147
+    ],
+    "max": [
+      0.5965448123974588,
+      0.5948571286919425,
+      0.07484497281762147
+    ]
+  }
+]

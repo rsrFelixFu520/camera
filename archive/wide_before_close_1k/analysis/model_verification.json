@@ -1,0 +1,71 @@
+{
+  "all_passed": true,
+  "checks": {
+    "RGGB_nearest": {
+      "max_constant_color_error": 5.554556846620873e-05,
+      "pass": true
+    },
+    "RGGB_bilinear": {
+      "max_constant_color_error": 5.554556846620873e-05,
+      "pass": true
+    },
+    "RGGB_edge_aware": {
+      "max_constant_color_error": 6.171464920046166e-05,
+      "pass": true
+    },
+    "BGGR_nearest": {
+      "max_constant_color_error": 5.554556846620873e-05,
+      "pass": true
+    },
+    "BGGR_bilinear": {
+      "max_constant_color_error": 5.554556846620873e-05,
+      "pass": true
+    },
+    "BGGR_edge_aware": {
+      "max_constant_color_error": 6.171464920046166e-05,
+      "pass": true
+    },
+    "GRBG_nearest": {
+      "max_constant_color_error": 5.554556846620873e-05,
+      "pass": true
+    },
+    "GRBG_bilinear": {
+      "max_constant_color_error": 5.554556846620873e-05,
+      "pass": true
+    },
+    "GRBG_edge_aware": {
+      "max_constant_color_error": 6.171464920046166e-05,
+      "pass": true
+    },
+    "poisson": {
+      "variance_over_mean": 1.0014357146118948,
+      "pass": true
+    },
+    "paired_identical": {
+      "SSIM": 1.0,
+      "PSNR_infinite": true,
+      "pass": true
+    },
+    "ipd_manual": {
+      "result": {
+        "IPD": 0.10000000000000003,
+        "n_pairs": 2,
+        "real_mean_iou": 0.4,
+        "sim_mean_iou": 0.3,
+        "both_zero_fraction": 0.5,
+        "acceptance_status": "NOT_EVALUATED",
+        "caution": "low IPD can include both-domain failures; require fixed evaluator and explicit GT instance pairing"
+      },
+      "pass": true
+    },
+    "limited_range_roundtrip": {
+      "max_DN": 0,
+      "pass": true
+    },
+    "global_scan_independent": {
+      "max_diff": 0.0,
+      "pass": true
+    }
+  },
+  "meaning": "software/model invariants only; no real-camera validation"
+}
